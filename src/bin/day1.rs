@@ -8,24 +8,11 @@ fn main() -> std::result::Result<(), Error> {
     let frequency_modifier: std::vec::Vec<&str> = input.split_whitespace().collect();
 
     for freq in frequency_modifier {
-        let mut freq_chars = freq.chars();
-        let operation: String =  freq_chars.nth(0)?.to_string();
-        let mut freq_adj: i64 = freq_chars.collect::<String>().parse::<i64>()?;
-        match operation.as_ref() {
-            "+" => {
-                frequency += freq_adj
-            },
-            "-" => {
-                frequency -= freq_adj
-            },
-            &_ => {
-                panic!("Error getting operation!!!!")
-            }
-        }
+        let mut freq_adj: i64 = freq.parse()?;
+         frequency += freq_adj
     }
 
     println!("{:#?}", frequency);
-    //println!("{:#?}", input);
     Ok(())
 }
 
